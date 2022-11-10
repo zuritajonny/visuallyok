@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import logoImg from "./media/logo.png";
 function App() {
   /*   let x = event.offsetX 
@@ -22,8 +22,14 @@ function App() {
   const [positionX, setPositionX] = useState();
   const [positionY, setPositionY] = useState();
 
-  const [spositionX, ssetPositionX] = useState();
-  const [spositionY, ssetPositionY] = useState();
+  const [animateText,setAnimateText] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimateText(true)
+    }, 1000);
+  }, [])
+  
 
   function backgroundAnimation(event) {
     const windowWidth = window.innerWidth;
@@ -66,7 +72,7 @@ function App() {
             <li>Contact</li>
           </ul>
         </div>
-        <div className="hero-text" >
+        <div className={animateText ? "hero-text hero-text-active" : "hero-text"} >
           
           <h2>Hero copy</h2>
           <button>Schedule a trip</button>
